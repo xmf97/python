@@ -1,0 +1,27 @@
+# -*- coding: utf-8 -*-
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+# 数据集 直径、价格
+x = [[150],[200],[250],[300],[350],[400],[600]]
+y = [[6450],[7450],[8450],[9450],[11450],[15450],[18450]]
+print
+x
+print
+y
+
+clf = LinearRegression()
+clf.fit(x, y)
+pre = clf.predict([[312.5]])
+print(u'预测面积是312.5 时的房屋价格: $%.2f' % pre)
+x2 = [[0], [200], [400], [600]]
+y2 = clf.predict(x2)
+
+plt.figure()
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 指定默认字体
+plt.title(u"线性回归预测房屋的面积和价格")
+plt.xlabel(u"x")
+plt.ylabel(u"price")
+plt.axis([0, 800, 0, 20000])
+plt.scatter(x,y, marker="s", s=20)
+plt.plot(x2, y2, "g-")
+plt.show()
